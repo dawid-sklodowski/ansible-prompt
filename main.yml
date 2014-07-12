@@ -1,0 +1,15 @@
+---
+- name: Setup prompting
+  hosts: all
+
+  tasks:
+  	- name: Set up prompt
+      template: src=templates/.bash-prompt dst=~/.bash-prompt
+    - name: Source .bash-prompt in .bashrc
+      lineinfile: dest=~/.bashrc line="source ~/.bash-prompt"
+    # - name: Add support for __git_ps1
+    #   lineinfile: dest=~/.bashrc line="alias __git_ps1=\"git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/ (\1)/'\""
+    # - name: Warning prompt function
+    #   lineinfile: dest=~/.bashrc line="__warning_prompt() { if [ $? -ne 0 ]; then echo -n \" ! \"; elif [ $SHLVL -gt 1 ]; then echo -n \" ${SHLVL} \"; fi; }"
+    # - name: Create fancy prompt
+    #   lineinfile: dest=~/.bashrc line="export PS1='\[\e[0;31m\]$(__warning_prompt)\[\e[0;36m\]\u@\h \[\e[0;35m\]\w\[\e[0;33m\]$(__git_ps1)\[\e[0;0m\] $ '"
