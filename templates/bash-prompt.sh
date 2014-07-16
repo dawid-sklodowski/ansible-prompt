@@ -2,10 +2,12 @@
 # at this point, but just in case it hasn't, we define a trimmed-down but otherwise
 # fully functional version in here, to ensure that PS1 is meaningful in either case
 type __git_ps1 > /dev/null 2>&1 ; [ $? -eq 0 ] || {
-	__git_ps1() {
+__git_ps1() {
 		( [ -d .git ] && ( echo -n " [" ; git symbolic-ref HEAD | sed -e "s#^.*/##" | tr -d '\n' ; echo -n "]" ; ) ) || echo "" ;
 	}
 }
+
+export GIT_PS1_SHOWDIRTYSTATE=true
 
 # this function prints an exclamation mark at the
 # start of the PS1 prompt if the previous command

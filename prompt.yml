@@ -4,6 +4,6 @@
 
   tasks:
     - name: Set up prompt
-      template: src=templates/.bash-prompt dest=~/.bash-prompt
-    - name: Source .bash-prompt in .bashrc
-      lineinfile: dest=~/.bashrc line="source ~/.bash-prompt"
+      template: src=templates/bash-prompt.sh dest=~/.bash-prompt.sh
+    - name: Source .bash-prompt.sh in .bashrc
+      lineinfile: dest=~/.bashrc line="source ~/.bash-prompt.sh"
